@@ -153,4 +153,4 @@ if st.button("Guardar conversacion"):
 # Botón para limpiar el historial de chat
 if st.button("Clear chat"):
     st.session_state.messages = []
-    st.experimental_rerun()  # Recargar la página para limpiar el chat
+    st.rerun()  # Recargar la página para limpiar el chat
