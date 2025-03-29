@@ -12,9 +12,7 @@ def response_generator():
             "Do you need help?",
         ]
     )
-    for word in response.split():
-        yield word + " "
-        time.sleep(0.05)
+    return response  # Regresamos toda la respuesta a la vez, sin dividirla palabra por palabra
 
 
 st.title("Simple chat")
@@ -39,12 +37,15 @@ if prompt := st.chat_input("What is up?"):
     # Mostrar "Escribiendo..." mientras el asistente genera la respuesta
     with st.chat_message("assistant"):
         st.markdown("**Assistant is typing...**")
+
+    # Simula un pequeño retraso antes de mostrar la respuesta completa
+    time.sleep(1)  # Puedes ajustar este tiempo de retraso para que se vea más natural
     
-    # Ahora, después de un breve retraso, mostrar la respuesta del asistente
-    time.sleep(1)  # Puedes ajustar el tiempo para controlar el retraso
-    response_text = ""
-    for word in response_generator():
-        response_text += word
+    # Generar la respuesta completa del asistente
+    response_text = response_generator()
+
+    # Mostrar la respuesta del asistente después del retraso
+    with st.chat_message("assistant"):
         st.markdown(response_text)
     
     # Agregar la respuesta del asistente al historial
