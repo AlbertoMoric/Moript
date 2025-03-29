@@ -25,7 +25,7 @@ if "messages" not in st.session_state:
 
 # Función para obtener la hora actual
 def get_time():
-    return time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
+    return time.strftime("%Y-%m-%d", time.gmtime())
     
 # Mostrar mensajes con la hora
 for message in st.session_state.messages:
@@ -33,8 +33,10 @@ for message in st.session_state.messages:
         time_sent = get_time()
         if message["role"] == "assistant":
             st.markdown(f"**{time_sent} - Assistant:** {message['content']}")
+            st.rerun()
         else:
             st.markdown(f"**{time_sent} - User:** {message['content']}")
+            st.rerun()
 
 # Accept user input
 if prompt := st.chat_input("Mera cabra dimeloo"):
