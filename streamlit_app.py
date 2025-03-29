@@ -61,11 +61,6 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
 #    if rating:
 #        st.session_state.messages.append({"role": "user", "content": f"Rating: {rating}"})'''
 
-# Botón para limpiar el historial de chat
-if st.button("Clear chat"):
-    st.session_state.messages = []
-    st.rerun()
-
 # Descargar historial de chat
 if st.button("Download chat history"):
     chat_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in st.session_state.messages])
@@ -75,3 +70,8 @@ if st.button("Download chat history"):
         file_name="chat_history.txt",
         mime="text/plain"
     )
+
+# Botón para limpiar el historial de chat
+if st.button("Clear chat"):
+    st.session_state.messages = []
+    st.rerun()
