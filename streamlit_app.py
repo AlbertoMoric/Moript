@@ -45,7 +45,7 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     typing_placeholder.markdown(f"**{assistant_name} está pensando...**")
 
     # Simula un pequeño retraso antes de mostrar la respuesta completa
-    time.sleep(2)  # Puedes ajustar este tiempo de retraso para que se vea más natural
+    time.sleep(10)  # Puedes ajustar este tiempo de retraso para que se vea más natural
     
     # Generar la respuesta completa del asistente según el input
     response_text = response_generator(prompt)
@@ -73,4 +73,4 @@ if st.button("Guardar conversacion"):
 # Botón para limpiar el historial de chat
 if st.button("Clear chat"):
     st.session_state.messages = []
-    st.experimental_rerun()  # Recargar la página para limpiar el chat
+    st.rerun()  # Recargar la página para limpiar el chat
