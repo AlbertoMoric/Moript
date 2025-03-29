@@ -41,3 +41,8 @@ if prompt := st.chat_input("What is up?"):
         response = st.write_stream(response_generator())
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
+
+# Botón para limpiar el historial de chat
+if st.button("Clear chat"):
+    st.session_state.messages = []
+    st.experimental_rerun()
