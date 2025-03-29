@@ -38,6 +38,11 @@ if prompt := st.chat_input("What is up?"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        response = st.write_stream(response_generator())
+        # Generate the response gradually
+        response_text = ""
+        for word in response_generator():
+            response_text += word
+            st.markdown(response_text)
+    
     # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append({"role": "assistant", "content": response_text})
