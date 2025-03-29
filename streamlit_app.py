@@ -55,13 +55,13 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     # Agregar la respuesta del asistente al historial
     st.session_state.messages.append({"role": "assistant", "content": response_text})
 
-# Botón para limpiar el historial de chat
-if st.button("Clear chat"):
-    st.session_state.messages = []
-    st.rerun()
-
 # Botón para que el usuario califique la respuesta
 if st.session_state.messages and st.session_state.messages[-1]["role"] == "assistant":
     rating = st.radio("Te queda clarinete?", options=["👍", "👎"])
     if rating:
         st.session_state.messages.append({"role": "user", "content": f"Rating: {rating}"})
+
+# Botón para limpiar el historial de chat
+if st.button("Clear chat"):
+    st.session_state.messages = []
+    st.rerun()
