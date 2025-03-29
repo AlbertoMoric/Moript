@@ -5,17 +5,19 @@ import time
 # Nombre del asistente
 assistant_name = "Moript"
 
-# Streamed response emulator
-def response_generator():
-    response = random.choice(
-        [
-            "Que dicesss! Que tienes pensado para hoy?",
-            "Que pasa cachorrita, estoy para lo que necesites!",
-            "Necesitas que te ayude en algo?",
-        ]
-    )
-    return response  # Regresamos toda la respuesta a la vez, sin dividirla palabra por palabra
-
+# Respuestas predeterminadas basadas en el input del usuario
+def response_generator(prompt):
+    # Respuestas simples basadas en el input del usuario
+    if "hola" in prompt.lower():
+        return "¡Hola! ¿Cómo estás?"
+    elif "qué tal" in prompt.lower():
+        return "Todo bien, ¿y tú? ¿En qué puedo ayudarte?"
+    elif "ayuda" in prompt.lower():
+        return "Claro, ¿en qué necesitas ayuda?"
+    elif "tu nombre" in prompt.lower():
+        return f"Me llamo {assistant_name}, soy tu asistente virtual."
+    else:
+        return "No estoy seguro de qué decir, pero ¡estoy aquí para ayudarte!"
 
 st.title(f"{assistant_name} V_0.1")  # Nombre del asistente en el título
 
