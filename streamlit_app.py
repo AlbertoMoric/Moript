@@ -1,20 +1,22 @@
 import streamlit as st
 import time
+import random
 
 # Nombre del asistente
 assistant_name = "Moript"
 
-# Respuestas predeterminadas basadas en el input del usuario
+# Función para generar respuesta personalizada
 def response_generator(prompt):
-    # Respuestas simples basadas en el input del usuario
     if "hola" in prompt.lower():
         return "¡Hola! ¿Cómo estás?"
-    elif "que tal" in prompt.lower():
+    elif "qué tal" in prompt.lower():
         return "Todo bien, ¿y tú? ¿En qué puedo ayudarte?"
     elif "ayuda" in prompt.lower():
         return "Claro, ¿en qué necesitas ayuda?"
     elif "tu nombre" in prompt.lower():
         return f"Me llamo {assistant_name}, soy tu asistente virtual."
+    elif "chiste" in prompt.lower():
+        return "¿Sabías que el libro de matemáticas estaba triste? Porque tenía demasiados problemas 😂"
     else:
         return "No estoy seguro de qué decir, pero ¡estoy aquí para ayudarte!"
 
@@ -45,7 +47,7 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     typing_placeholder.markdown(f"**{assistant_name} está pensando...**")
 
     # Simula un pequeño retraso antes de mostrar la respuesta completa
-    time.sleep(10)  # Puedes ajustar este tiempo de retraso para que se vea más natural
+    time.sleep(2)  # Puedes ajustar este tiempo de retraso para que se vea más natural
     
     # Generar la respuesta completa del asistente según el input
     response_text = response_generator(prompt)
@@ -73,4 +75,4 @@ if st.button("Guardar conversacion"):
 # Botón para limpiar el historial de chat
 if st.button("Clear chat"):
     st.session_state.messages = []
-    st.rerun()  # Recargar la página para limpiar el chat
+    st.experimental_rerun()  # Recargar la página para limpiar el chat
