@@ -9,7 +9,7 @@ def response_generator(prompt):
     # Respuestas simples basadas en el input del usuario
     if "hola" in prompt.lower():
         return "¡Hola! ¿Cómo estás?"
-    elif "qué tal" in prompt.lower():
+    elif "que tal" in prompt.lower():
         return "Todo bien, ¿y tú? ¿En qué puedo ayudarte?"
     elif "ayuda" in prompt.lower():
         return "Claro, ¿en qué necesitas ayuda?"
