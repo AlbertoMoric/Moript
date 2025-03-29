@@ -40,7 +40,7 @@ if prompt := st.chat_input("What is up?"):
     typing_placeholder.markdown("**Assistant is typing...**")
 
     # Simula un pequeño retraso antes de mostrar la respuesta completa
-    time.sleep(1)  # Puedes ajustar este tiempo de retraso para que se vea más natural
+    time.sleep(10)  # Puedes ajustar este tiempo de retraso para que se vea más natural
     
     # Generar la respuesta completa del asistente
     response_text = response_generator()
@@ -55,3 +55,7 @@ if prompt := st.chat_input("What is up?"):
     # Agregar la respuesta del asistente al historial
     st.session_state.messages.append({"role": "assistant", "content": response_text})
 
+# Botón para limpiar el historial de chat
+if st.button("Clear chat"):
+    st.session_state.messages = []
+    st.experimental_rerun()
