@@ -62,10 +62,10 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
 #        st.session_state.messages.append({"role": "user", "content": f"Rating: {rating}"})'''
 
 # Descargar historial de chat
-if st.button("Download chat history"):
+if st.button("Guardar conversacion"):
     chat_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in st.session_state.messages])
     st.download_button(
-        label="Download as text file",
+        #label="Download as text file",
         data=chat_history,
         file_name="chat_history.txt",
         mime="text/plain"
