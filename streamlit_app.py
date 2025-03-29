@@ -20,18 +20,46 @@ def response_generator(prompt):
     else:
         return "No estoy seguro de qué decir, pero ¡estoy aquí para ayudarte!"
 
-st.title(f"{assistant_name} V_0.1")  # Nombre del asistente en el título
+# Función para mostrar opciones de menú
+def show_options():
+    options = ["Ver clima", "Contar chiste", "Preguntar sobre mí", "Ayuda"]
+    return st.selectbox("¿Qué te gustaría hacer?", options)
 
 # Inicializar el historial de mensajes
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+# Título del asistente
+st.title(f"{assistant_name} V_0.1")  
 
 # Mostrar los mensajes previos
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Aceptar entrada del usuario
+# Mostrar un selectbox con opciones para interactuar
+selected_option = show_options()
+
+# Mostrar la respuesta según la opción seleccionada
+if selected_option:
+    if selected_option == "Ver clima":
+        # Aquí podrías integrar una API de clima, por ejemplo
+        response_text = "El clima está soleado hoy 🌞."
+    elif selected_option == "Contar chiste":
+        response_text = "¿Sabías que el libro de matemáticas estaba triste? Porque tenía demasiados problemas 😂"
+    elif selected_option == "Preguntar sobre mí":
+        response_text = f"Soy {assistant_name}, tu asistente virtual. Estoy aquí para ayudarte."
+    elif selected_option == "Ayuda":
+        response_text = "Puedo ayudarte con muchas cosas. ¿Qué te gustaría saber?"
+
+    # Mostrar la respuesta del asistente después de seleccionar la opción
+    with st.chat_message("assistant"):
+        st.markdown(f"{assistant_name}: {response_text}")
+    
+    # Agregar la respuesta del asistente al historial
+    st.session_state.messages.append({"role": "assistant", "content": f"{assistant_name}: {response_text}"})
+
+# Aceptar entrada del usuario (en caso de que el usuario quiera escribir algo)
 if prompt := st.chat_input("Mera cabra dimeloo"):
     # Agregar el mensaje del usuario al historial
     st.session_state.messages.append({"role": "user", "content": prompt})
