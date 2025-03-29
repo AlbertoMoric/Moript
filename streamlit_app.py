@@ -26,10 +26,7 @@ if "messages" not in st.session_state:
 # Mostrar mensajes con el nombre del asistente
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        if message["role"] == "assistant":
-            st.markdown(f"**{assistant_name}:** {message['content']}")
-        else:
-            st.markdown(message["content"])
+        st.markdown(message["content"])
 
 # Accept user input
 if prompt := st.chat_input("Mera cabra dimeloo"):
