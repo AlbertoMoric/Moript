@@ -39,7 +39,6 @@ if prompt := st.chat_input("What is up?"):
     # Mostrar "Escribiendo..." mientras el asistente genera la respuesta
     with st.chat_message("assistant"):
         st.markdown("**Assistant is typing...**")
-        st.experimental_rerun()  # Actualizar la página para mostrar el mensaje "Escribiendo..."
     
     # Ahora, después de un breve retraso, mostrar la respuesta del asistente
     time.sleep(1)  # Puedes ajustar el tiempo para controlar el retraso
