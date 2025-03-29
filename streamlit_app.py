@@ -13,6 +13,7 @@ def response_generator():
     )
     return response  # Regresamos toda la respuesta a la vez, sin dividirla palabra por palabra
 
+
 st.title("Moript V_0.1")
 
 # Initialize chat history
@@ -35,11 +36,11 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     # Crear un espacio vacío para el mensaje de "Escribiendo..."
     typing_placeholder = st.empty()
 
-    # Mostrar "Escribiendo..." de manera más dinámica (puntos suspensivos)
+    # Mostrar "Escribiendo..." mientras el asistente genera la respuesta
     typing_placeholder.markdown("**Dejame que de un pensamiento...**")
 
     # Simula un pequeño retraso antes de mostrar la respuesta completa
-    time.sleep(2)  # Puedes ajustar este tiempo de retraso para que se vea más natural
+    time.sleep(10)  # Puedes ajustar este tiempo de retraso para que se vea más natural
     
     # Generar la respuesta completa del asistente
     response_text = response_generator()
@@ -54,7 +55,23 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     # Agregar la respuesta del asistente al historial
     st.session_state.messages.append({"role": "assistant", "content": response_text})
 
+# Botón para que el usuario califique la respuesta
+#'''if st.session_state.messages and st.session_state.messages[-1]["role"] == "assistant":
+#    rating = st.radio("Te queda clarinete?", options=["👍", "👎"])
+#    if rating:
+#        st.session_state.messages.append({"role": "user", "content": f"Rating: {rating}"})'''
+
+# Descargar historial de chat
+if st.button("Guardar conversacion"):
+    chat_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in st.session_state.messages])
+    st.download_button(
+        label="Guardar como texto",
+        data=chat_history,
+        file_name="chat_history.txt",
+        mime="text/plain"
+    )
+
 # Botón para limpiar el historial de chat
 if st.button("Clear chat"):
     st.session_state.messages = []
-    st.experimental_rerun()  # Actualizamos la página para limpiar el chat
+    st.rerun()
