@@ -20,10 +20,16 @@ st.title("Moript V_0.1")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat messages from history on app rerun
+# Asignar un nombre al asistente
+assistant_name = "pollas"  # Aquí puedes cambiar el nombre del asistente
+
+# Mostrar mensajes con el nombre del asistente
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+        if message["role"] == "assistant":
+            st.markdown(f"**{assistant_name}:** {message['content']}")
+        else:
+            st.markdown(message["content"])
 
 # Accept user input
 if prompt := st.chat_input("Mera cabra dimeloo"):
