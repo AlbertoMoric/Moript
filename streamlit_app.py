@@ -2,6 +2,9 @@ import streamlit as st
 import random
 import time
 
+# Nombre del asistente
+assistant_name = "Moript"
+
 # Streamed response emulator
 def response_generator():
     response = random.choice(
@@ -14,14 +17,11 @@ def response_generator():
     return response  # Regresamos toda la respuesta a la vez, sin dividirla palabra por palabra
 
 
-st.title("Moript V_0.1")
+st.title(f"{assistant_name} V_0.1")  # Nombre del asistente en el título
 
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
-# Asignar un nombre al asistente
-assistant_name = "pollas"  # Aquí puedes cambiar el nombre del asistente
 
 # Mostrar mensajes con el nombre del asistente
 for message in st.session_state.messages:
