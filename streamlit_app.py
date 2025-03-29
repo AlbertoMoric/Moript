@@ -36,25 +36,17 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Display assistant response in chat message container
+    # Mostrar "Escribiendo..." mientras el asistente genera la respuesta
     with st.chat_message("assistant"):
-        response = st.write_stream(response_generator())
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response})
-
-# Botón para limpiar el historial de chat
-if st.button("Clear chat"):
-    st.session_state.messages = []
-    st.rerun()  # Usar st.rerun() en lugar de st.experimental_rerun()
-
-# Indicador de "Escribiendo..."
-with st.chat_message("assistant"):
-    st.markdown("**Assistant is typing...**")
-    time.sleep(1)  # Simula un pequeño retraso antes de mostrar la respuesta final
-    response_text = ""  # Esto es lo que ya tienes para mostrar la respuesta
+        st.markdown("**Assistant is typing...**")
+        st.experimental_rerun()  # Actualizar la página para mostrar el mensaje "Escribiendo..."
+    
+    # Ahora, después de un breve retraso, mostrar la respuesta del asistente
+    time.sleep(1)  # Puedes ajustar el tiempo para controlar el retraso
+    response_text = ""
     for word in response_generator():
         response_text += word
         st.markdown(response_text)
-
-    # Eliminar el indicador de "Escribiendo..." una vez que la respuesta esté completa
+    
+    # Agregar la respuesta del asistente al historial
     st.session_state.messages.append({"role": "assistant", "content": response_text})
