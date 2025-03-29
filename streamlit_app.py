@@ -22,21 +22,11 @@ st.title(f"{assistant_name} V_0.1")  # Nombre del asistente en el título
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
-# Función para obtener la hora actual
-def get_time():
-    return time.strftime("%Y-%m-%d", time.gmtime())
     
 # Mostrar mensajes con la hora
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        time_sent = get_time()
-        if message["role"] == "assistant":
-            st.markdown(f"**{time_sent} - Assistant:** {message['content']}")
-            st.rerun()
-        else:
-            st.markdown(f"**{time_sent} - User:** {message['content']}")
-            st.rerun()
+        st.markdown(message["content"])
 
 # Accept user input
 if prompt := st.chat_input("Mera cabra dimeloo"):
