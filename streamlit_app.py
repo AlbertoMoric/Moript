@@ -39,8 +39,8 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     # Crear un espacio vacío para el mensaje de "Escribiendo..."
     typing_placeholder = st.empty()
 
-    # Mostrar "Escribiendo..." mientras el asistente genera la respuesta
-    typing_placeholder.markdown("**Dejame que de un pensamiento...**")
+   # Mostrar "Escribiendo..." de manera más dinámica (puntos suspensivos)
+    typing_placeholder.markdown(f"**{assistant_name} está pensando...**")
 
     # Simula un pequeño retraso antes de mostrar la respuesta completa
     time.sleep(10)  # Puedes ajustar este tiempo de retraso para que se vea más natural
