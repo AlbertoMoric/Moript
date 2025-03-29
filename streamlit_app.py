@@ -45,4 +45,4 @@ if prompt := st.chat_input("What is up?"):
 # Botón para limpiar el historial de chat
 if st.button("Clear chat"):
     st.session_state.messages = []
-    st.experimental_rerun()
+    st.rerun()  # Usar st.rerun() en lugar de st.experimental_rerun()
