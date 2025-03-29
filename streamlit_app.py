@@ -6,15 +6,15 @@ import time
 def response_generator():
     response = random.choice(
         [
-            "Hello there! How can I assist you today?",
-            "Hi, human! Is there anything I can help you with?",
-            "Do you need help?",
+            "Que dicesss! Que tienes pensado para hoy?",
+            "Que pasa cachorrita, estoy para lo que necesites!",
+            "Necesitas que te ayude en algo?",
         ]
     )
     return response  # Regresamos toda la respuesta a la vez, sin dividirla palabra por palabra
 
 
-st.title("Simple chat")
+st.title("Moript V_0.1")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -37,7 +37,7 @@ if prompt := st.chat_input("What is up?"):
     typing_placeholder = st.empty()
 
     # Mostrar "Escribiendo..." mientras el asistente genera la respuesta
-    typing_placeholder.markdown("**Assistant is typing...**")
+    typing_placeholder.markdown("**Dejame que de un pensamiento...**")
 
     # Simula un pequeño retraso antes de mostrar la respuesta completa
     time.sleep(10)  # Puedes ajustar este tiempo de retraso para que se vea más natural
