@@ -56,10 +56,10 @@ if prompt := st.chat_input("Mera cabra dimeloo"):
     st.session_state.messages.append({"role": "assistant", "content": response_text})
 
 # Botón para que el usuario califique la respuesta
-'''if st.session_state.messages and st.session_state.messages[-1]["role"] == "assistant":
-    rating = st.radio("Te queda clarinete?", options=["👍", "👎"])
-    if rating:
-        st.session_state.messages.append({"role": "user", "content": f"Rating: {rating}"})'''
+#'''if st.session_state.messages and st.session_state.messages[-1]["role"] == "assistant":
+#    rating = st.radio("Te queda clarinete?", options=["👍", "👎"])
+#    if rating:
+#        st.session_state.messages.append({"role": "user", "content": f"Rating: {rating}"})'''
 
 # Botón para limpiar el historial de chat
 if st.button("Clear chat"):
