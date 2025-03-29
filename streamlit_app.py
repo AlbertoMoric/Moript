@@ -75,14 +75,3 @@ if st.button("Guardar conversacion"):
 if st.button("Clear chat"):
     st.session_state.messages = []
     st.rerun()
-
-# Asignar un nombre al asistente
-assistant_name = "Chatbot"  # Aquí puedes cambiar el nombre del asistente
-
-# Mostrar mensajes con el nombre del asistente
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        if message["role"] == "assistant":
-            st.markdown(f"**{assistant_name}:** {message['content']}")
-        else:
-            st.markdown(message["content"])
